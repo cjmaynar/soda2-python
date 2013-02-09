@@ -26,13 +26,11 @@ class Socrata(object):
         uri = uri[:-1]
 
         headers = {'Content-type': 'application/json', 'X-App-Token': self.token }
-
         response = client(uri, headers = headers, auth = (self.username, self.password))
         content = response.text
 
         if content != None and len(content) > 0:
             response_parased = json.loads(content)
-            print response_parased
             return response_parased
 
         return None
